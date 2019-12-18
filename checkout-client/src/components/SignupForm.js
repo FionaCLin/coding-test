@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../service";
+import logo from "../logo.png";
 
 export default class SignupForm extends Component {
   constructor(props) {
@@ -38,47 +39,56 @@ export default class SignupForm extends Component {
 
   render() {
     return (
-      <form className="container" onSubmit={this.handleSubmit}>
-        <p className="error">{this.state.error}</p>
-        <div className="">
-          <div className="input-field col  s12 m10 l8 xl8">
-            <i className="material-icons prefix">account_circle</i>
-            <input
-              id="icon_prefix"
-              type="text"
-              className="validate"
-              name="email"
-              placeholder="Enter your full name"
-              value={this.state.email}
-              onChange={this.handleChange}
-              required
-            />
-            <label htmlFor="icon_prefix">Full Name</label>
-          </div>
-          <div className="input-field col  s12 m10 l8 xl8">
-            <i className="material-icons prefix">vpn_key</i>
-            <input
-              id="icon_password"
-              type="password"
-              name="password"
-              className="validate"
-              placeholder="Enter your password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              required
-            />
-            <label htmlFor="icon_password">New Password</label>
-          </div>
-        </div>
-        <div className="form-button-group">
-          <Link to="/" className="btn-small">
-            Login
-          </Link>
-          <button className="btn-small" to="/signup">
-            Signup
-          </button>
-        </div>
-      </form>
+      <body>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Coding Test</h2>
+          <div></div>
+        </header>
+        <main>
+          <form className="container" onSubmit={this.handleSubmit}>
+            <p className="error">{this.state.error}</p>
+            <div className="">
+              <div className="input-field col  s12 m10 l8 xl8">
+                <i className="material-icons prefix">account_circle</i>
+                <input
+                  id="icon_prefix"
+                  type="text"
+                  className="validate"
+                  name="email"
+                  placeholder="Enter your full name"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  required
+                />
+                <label htmlFor="icon_prefix">Full Name</label>
+              </div>
+              <div className="input-field col  s12 m10 l8 xl8">
+                <i className="material-icons prefix">vpn_key</i>
+                <input
+                  id="icon_password"
+                  type="password"
+                  name="password"
+                  className="validate"
+                  placeholder="Enter your password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  required
+                />
+                <label htmlFor="icon_password">New Password</label>
+              </div>
+            </div>
+            <div className="form-button-group">
+              <Link to="/" className="btn-small">
+                Login
+              </Link>
+              <button className="btn-small" to="/signup">
+                Signup
+              </button>
+            </div>
+          </form>
+        </main>
+      </body>
     );
   }
 }

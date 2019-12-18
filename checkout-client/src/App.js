@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect, HashRouter } from "react-router-dom";
 
-import logo from "./logo.png";
 import "./App.css";
 
 import Login from "./components/LoginForm";
@@ -11,12 +10,6 @@ import Checkout from "./pages/Checkout";
 function App() {
   return (
     <div className="App">
-      <body>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          Coding Test
-        </header>
-        <main>
           <HashRouter>
             <Switch>
               <Route exact path="/" component={Login} />
@@ -25,8 +18,6 @@ function App() {
               <Redirect to="/" />
             </Switch>
           </HashRouter>
-        </main>
-      </body>
     </div>
   );
 }
