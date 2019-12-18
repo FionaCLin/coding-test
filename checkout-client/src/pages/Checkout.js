@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { getApi } from "../api";
-import { placeAutocomplete } from "../service";
+import logo from "../logo.png";
+import { admin_only } from "../api";
 import AddressInput from "../components/AddressInput";
-import TextField from "@material-ui/core/TextField";
+import { auth } from "../service";
 
 export default class Checkout extends Component {
   _isMounted = false;
@@ -18,10 +18,17 @@ export default class Checkout extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    getApi().then(api => {
-      if (this._isMounted) {
-        this.setState({ api: api }, () => {});
-      }
+    auth.onAuthStateChanged(user => {
+      console.log(user);
+      // admin_only(user)
+      //   .then(res => {
+      //     if (this._isMounted) {
+      //       this.setState({ user: user });
+      //     }
+      //   })
+      //   .catch(err => {
+      //     this.props.history.push("/");
+      //   });
     });
   }
 
@@ -35,54 +42,26 @@ export default class Checkout extends Component {
     });
   };
 
-  autoCompleteFunc = event => {
-    let parameters = {
-      input: this.state.address
-    };
-    console.log(parameters);
-    placeAutocomplete(parameters, function(error, response) {
-      if (error) throw error;
-      console.log(response, error);
-    });
-
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+  logout = e => {
+    this.props.history.push("/");
+    auth.signOut();
   };
 
   render() {
     return (
-      <main className="container">
-        <h3>Check Out</h3>
-        <TextField
-          id="icon_fullname"
-          style={{ "margin-bottom": "16px" }}
-          name="fullname"
-          label="Full Name"
-          fullWidth
-          type="text"
-          variant="outlined"
-          className="validate"
-          value={this.state.fullname}
-          onChange={this.handleChange}
-        >
-          {/* <i className="material-icons prefix">account_circle</i> */}
-        </TextField>
-        {/* <i className="material-icons prefix">phone</i> */}
-        <TextField
-          id="icon_telephone"
-          name="phone"
-          type="tel"
-          style={{ "margin-bottom": "16px" }}
-          label="Telephone"
-          variant="outlined"
-          className="validate"
-          fullWidth
-          value={this.state.phone}
-          onChange={this.handleChange}
-        ></TextField>
-        <AddressInput />
-      </main>
+      <body>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          Coding Test
+          <button className="btn-flat dark-4" onClick={this.logout}>
+            Logout
+          </button>
+        </header>
+        <main className="container">
+          <h3>Check Out</h3>
+          <AddressInput />
+        </main>
+      </body>
     );
   }
 }
