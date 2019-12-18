@@ -3,16 +3,16 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
+  margin: 8px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     /* animation: App-logo-spin infinite 20s linear; */
-    width: 20%;
-    height:20%;
-
+    width: 10%;
+    height:10%;
   }
 }
 
@@ -26,6 +26,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  display: flex;
+  flex-direction: row;
 }
 
 .App-link {

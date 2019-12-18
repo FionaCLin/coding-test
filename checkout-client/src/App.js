@@ -14,6 +14,7 @@ function App() {
       <body>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          Coding Test
         </header>
         <main>
           <HashRouter>
