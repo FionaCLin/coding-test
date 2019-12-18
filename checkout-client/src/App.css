@@ -12,7 +12,7 @@
   .App-logo {
     /* animation: App-logo-spin infinite 20s linear; */
     width: 10%;
-    height:10%;
+    height: 10%;
   }
 }
 
@@ -21,16 +21,14 @@
   padding: 16px;
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
-  display: flex;
-  flex-direction: row;
 }
 
-.App-link {
+.App-header > button {
   color: #61dafb;
 }
 
@@ -43,9 +41,9 @@
   }
 }
 
-.form-button-group>.btn-small{
+.form-button-group > .btn-small {
   margin: 8px;
 }
 .error {
-  color:red
+  color: red;
 }
