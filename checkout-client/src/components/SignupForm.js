@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../service";
-import logo from "../logo.png";
 
 export default class SignupForm extends Component {
   constructor(props) {
@@ -39,14 +38,9 @@ export default class SignupForm extends Component {
 
   render() {
     return (
-      <body>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Coding Test</h2>
-          <div></div>
-        </header>
-        <main>
-          <form className="container" onSubmit={this.handleSubmit}>
+      <main className="container">
+        <div className="card">
+          <form className="card-content" onSubmit={this.handleSubmit}>
             <p className="error">{this.state.error}</p>
             <div className="">
               <div className="input-field col  s12 m10 l8 xl8">
@@ -87,8 +81,8 @@ export default class SignupForm extends Component {
               </button>
             </div>
           </form>
-        </main>
-      </body>
+        </div>
+      </main>
     );
   }
 }

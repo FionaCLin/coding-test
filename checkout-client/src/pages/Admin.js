@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { admin_only } from "../api";
-import AddressInput from "../components/AddressInput";
 
-export default class Checkout extends Component {
+export default class Admin extends Component {
   _isMounted = false;
   constructor(props) {
     super(props);
@@ -27,12 +25,21 @@ export default class Checkout extends Component {
       [event.target.name]: event.target.value
     });
   };
-  
+
+  addAdminRole = evt => {
+    console.log(evt);
+  };
+
   render() {
     return (
       <main className="container">
-        <h4>Check Out</h4>
-        <AddressInput />
+        <div className="input-field col s8">
+          <input id="email" type="email" className="validate" />
+          <label htmlFor="email">Email</label>
+        </div>
+        <button className="col s3" onClick={this.addAdminRole()}>
+          Make as Admin
+        </button>
       </main>
     );
   }

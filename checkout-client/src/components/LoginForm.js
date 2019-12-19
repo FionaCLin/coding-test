@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "../logo.png";
 import { Link } from "react-router-dom";
 import { auth } from "../service";
 
@@ -21,6 +20,7 @@ export default class LoginForm extends Component {
     if (this.state.email === "" || this.state.name === "") return;
     event.preventDefault();
     console.log("onSubmit");
+    console.log(this.props.history);
 
     auth
       .signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -37,14 +37,9 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <body>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Coding Test</h2>
-          <div></div>
-        </header>
-        <main>
-          <form className="container" onSubmit={this.handleSubmit}>
+      <main className="container">
+        <div className="card">
+          <form className="card-content" onSubmit={this.handleSubmit}>
             <p className="error">{this.state.error}</p>
             <div className="">
               <div className="input-field col s12 m8 l6 xl4">
@@ -85,8 +80,8 @@ export default class LoginForm extends Component {
               </Link>
             </div>
           </form>
-        </main>
-      </body>
+        </div>
+      </main>
     );
   }
 }
