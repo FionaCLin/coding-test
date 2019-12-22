@@ -29,11 +29,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function GoogleMaps() {
+export default function AddressInput({selectLoc}) {
   const classes = useStyles();
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState([]);
   const loaded = React.useRef(false);
+
+ 
 
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
@@ -50,7 +52,7 @@ export default function GoogleMaps() {
   const handleChange = event => {
     setInputValue(event.target.value);
   };
-
+ 
   const fetch = React.useMemo(
     () =>
       throttle((input, callback) => {
@@ -98,16 +100,19 @@ export default function GoogleMaps() {
       includeInputInList
       freeSolo
       disableOpenOnFocus
-      renderInput={params => (
-        <TextField
-          {...params}
-          label="Add Shipping Address"
-          variant="outlined"
-          fullWidth
-          onChange={handleChange}
-        >
-        </TextField>
-      )}
+      renderInput={params => {
+        return (
+          <TextField
+            {...params}
+            label="Add Shipping Address"
+            variant="outlined"
+            fullWidth
+            value={params.inputProps.value}
+            onChange={handleChange}
+            onSelect={selectLoc}
+          ></TextField>
+        );
+      }}
       renderOption={option => {
         const matches =
           option.structured_formatting.main_text_matched_substrings;
