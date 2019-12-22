@@ -11,20 +11,26 @@ app.get("/api", (request, response) => {
   response.send("Hello from Firebase!");
 });
 
-app.get("/api/admin_only", async(request, response) => {
-  console.log(request)
+app.get("/api/admin_only", async (request, response) => {
+  let token = "";
+  if (request.headers && request.headers.hasOwnProperty("authorization")) {
+    token = request.headers.authorization.split(" ")[1];
+  }
   await admin
-  .auth()
-  .getUserByEmail(request.body.email) 
-  .then(user => {
-    response.send(user);
-    return
-  })
-  .catch(err => {
-    response.status(400).send(err.message);
-    return 
-  });
-  response.send("Hello from Firebase!");
+    .auth()
+    .verifyIdToken(token)
+    .then(user => {
+      if(user.admin){
+        response.send();
+      } else {
+        response.status(401).send();
+      }
+      return user
+    })
+    .catch(err => {
+      response.status(400).send(err.message);
+      return err
+    });
 });
 
 app.post("/api/admin_only", async (request, response) => {
@@ -37,14 +43,15 @@ app.post("/api/admin_only", async (request, response) => {
       });
     })
     .then(user => {
-      response.send({message: `Success! ${request.body.email} has been made an admin.`});
-      return
+      response.send({
+        message: `Success! ${request.body.email} has been made an admin.`
+      });
+      return;
     })
     .catch(err => {
       response.status(400).send(err.message);
-      return 
+      return;
     });
 });
-
 
 exports.app = functions.https.onRequest(app);
