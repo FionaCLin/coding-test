@@ -1,4 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Checkout page challenge
+This coding exercise is utilising Google Places and Map APIs to show the direction from current position to your entered destination. Also it used firebase auth service to signup and authorise the users, as well as firebase function as backend server.
+
+Hence, you need to create a firebase project and a valid API key from GCP to user those API for development and , as well as installing the firebase CLI for deploy the host 
+
+Therefore you need to save the `apiKey.sample.json` as `apiKey.json` inside `src/` folder and put your API key inside the file `apiKey.json`.
+
+This exercise consist of 2 main part:
+- Firebase functions as the backend server
+
+This serverless function to handle the required REST requests, it is mainly from client.
+
+ - SPA Progressive Web Application as the client
+
+This client part was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -66,3 +80,33 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+# Run App locally using firebase 
+Assume you have firebase cli installed, or install it following this [Link](https://firebase.google.com/docs/cli)
+
+Then to run the app locally using below command:
+```
+firebase serve --only hosting,functions
+```
+
+To deploy new changes in SPA client to firebase hosting use following command:
+
+```bash
+# first login 
+firebase login
+# then build the SPA client
+npm run build
+# after login deploy
+firebase deploy --only hosting
+```
+
+To deploy new changes in firebase function use following command:
+```bash
+# after login deploy
+firebase deploy --only functions
+```
+Run the function test after deploying, run below command inside directory `functions/`
+```
+npm run e2e:test
+```
