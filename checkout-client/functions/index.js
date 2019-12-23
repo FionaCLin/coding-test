@@ -8,7 +8,7 @@ admin.initializeApp();
 
 app.use(cors());
 app.get("/api", (request, response) => {
-  response.send("Hello from Firebase!");
+  response.send("v1.0");
 });
 
 app.get("/api/admin_only", async (request, response) => {
