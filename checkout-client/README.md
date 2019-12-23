@@ -110,3 +110,9 @@ Run the function test after deploying, run below command inside directory `funct
 ```
 npm run e2e:test
 ```
+
+# Login user
+```
+fiona.lin1001@gmail.com -- abc123 -- admin user
+qubonnybac4423@yopmail.com -- qwe123 -- read only user
+```
