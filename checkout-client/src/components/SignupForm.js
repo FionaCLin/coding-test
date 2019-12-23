@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { auth } from "../service";
 
 export default class SignupForm extends Component {
@@ -20,18 +19,14 @@ export default class SignupForm extends Component {
   handleSubmit = event => {
     if (this.state.email === "" || this.state.password === "") return;
     event.preventDefault();
-    console.log("onSubmit");
     this.setState({ email: "", password: "", error: "" });
     // sign up the user
     auth
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(cred => {
-        console.log(cred.user);
-
         this.props.history.push("/");
       })
       .catch(err => {
-        console.log("1111", err.message);
         this.setState({ error: `*${err.message}` });
       });
   };
@@ -73,9 +68,6 @@ export default class SignupForm extends Component {
               </div>
             </div>
             <div className="form-button-group">
-              <Link to="/" className="btn-small">
-                Login
-              </Link>
               <button className="btn-small" to="/signup">
                 Signup
               </button>

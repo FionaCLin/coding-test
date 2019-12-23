@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 10vmin;
+  height: 8vmin;
   pointer-events: none;
   margin: 8px;
 }
@@ -11,15 +11,15 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     /* animation: App-logo-spin infinite 20s linear; */
-    width: 10%;
-    height: 10%;
+    width: 8%;
+    height: 8%;
   }
 }
 
 .App-header {
   background-color: #282c34;
   padding: 16px;
-  min-height: 10vh;
+  min-height: 8vh;
   display: flex;
   flex-direction: row wrap;
   align-items: center;
@@ -28,7 +28,11 @@
   color: white;
 }
 
-.App-header-button >button{
+.App-header-button > button{
+  color: #61dafb;
+}
+
+.App-header-button > button a{
   color: #61dafb;
 }
 
