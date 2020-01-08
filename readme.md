@@ -55,3 +55,9 @@ It's all about the the result, but here are few rules:
 - Feel free to use any 3rd party library you like
 - Elaborate your selection of 3rd party tools/libraries and coding principle you apply in your code
 - Your code must be able to be compiled by us to review the app
+
+# [Solution](./checkout-client/README.MD)
+The manual of the simple checkout app
+
+# [To Do](./todo)
+Things to improve

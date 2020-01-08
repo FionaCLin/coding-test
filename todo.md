@@ -4,9 +4,8 @@
 
 # {'role': 'fullstack-web-dev'}
 
-- CI pipeline, i.e: eslint, prettier
-- Deployed somewhere
-- Unit tested
+- CI/CD pipeline, i.e: eslint, prettier
+- More Unit tested
 - Webpack / tree shaking
 - Readme on code design, 3rd party library and the use in your app
 - Elaborate your selection of 3rd party tools/libraries and coding principle you apply in your code
